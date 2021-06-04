@@ -13,7 +13,7 @@ import model.World;
 public class GamePanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
-	private final static int CELLSIZE = 100;
+	private final static int CELLSIZE = 10;
 	
 	private final static Color backgroundColor = Color.BLACK;
 	private final static Color foregroundColor = Color.GREEN;
@@ -62,6 +62,10 @@ public class GamePanel extends JPanel {
 		
 		if(world == null) {
 			world = new World(rows, columns);
+		} else {
+			if(world.getRows() != rows || world.getColumns() != columns) {
+				world = new World(rows, columns);
+			}
 		}
 		
 		g2.setColor(backgroundColor);
@@ -115,6 +119,5 @@ public class GamePanel extends JPanel {
 		world.next();
 		repaint();
 	}
-	
 	
 }

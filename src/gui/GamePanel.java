@@ -5,6 +5,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.JPanel;
 
@@ -16,7 +19,7 @@ public class GamePanel extends JPanel {
 	private final static int CELLSIZE = 10;
 	
 	private final static Color backgroundColor = Color.BLACK;
-	private final static Color foregroundColor = Color.GREEN;
+	private final static Color foregroundColor = Color.CYAN;
 	private final static Color gridColor = Color.GRAY;
 	
 	private int topBottomMargin;
@@ -44,6 +47,7 @@ public class GamePanel extends JPanel {
 			
 		});
 		
+		Executors.newScheduledThreadPool(1).scheduleAtFixedRate(()->next(), 500, 500, TimeUnit.MILLISECONDS);
 	}
 	
 	@Override
